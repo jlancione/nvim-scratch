@@ -45,7 +45,7 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
-cmp.setup {
+cmp.setup { -- here we are selecting the snippet engine
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -65,6 +65,7 @@ cmp.setup {
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm { select = true },
+    -- setting superTab (ie overloading the Tab key)
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -94,6 +95,7 @@ cmp.setup {
       "s",
     }),
   },
+  -- qsto che segue e' l'aspetto del menu che spunta mentre scrivi (e' qua che scegli chi compare e messo come)
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -108,7 +110,8 @@ cmp.setup {
       return vim_item
     end,
   },
-  sources = {
+  sources = { -- qsto e' l'ordine in cui compaiono le scelte nel menu
+  -- se prima abbiamo settato lo snippet engine h gli stiamo dicendo da dove pescare i suggerimenti (chiaramente sono tutti plugin e se ne vuoi altri nn devi solo metterli nel plugin.lua ma anche aggiungerli qua)
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
