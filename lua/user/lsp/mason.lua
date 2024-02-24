@@ -46,3 +46,4 @@ for _, server in pairs(servers) do
 
 	lspconfig[server].setup(opts)
 end
+-- there is a way to add options only for certain servers but I'll have to refer you to mason documentation...

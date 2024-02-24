@@ -1,7 +1,7 @@
-local M = {}
+local M = {} -- l'idea e' molto bella: tutto qlo che facciamo/ci interessa lo passiamo come coppia key-value dentro qsta table M e alla fine esportiamo lei! in qsta maniera nn ci portiamo a spasso tutte le variabili locali (ad esempio la maxi lsp_keymaps()) 
 
 -- TODO: backfill this to template
-M.setup = function()
+M.setup = function() -- qsto pke' in realta' qsto file lo usiamo in 1 modo particolare ie nn ne facciamo solo 1 require(handlers) ma facciamo require("path.handlers").setup()! e in altri file ne richiamiamo altri metodi!
   local signs = {
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "" },
@@ -37,14 +37,14 @@ M.setup = function()
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
-  })
+  }) -- qsto e' clamoroso! (in realta' qua stai solo facendo in modo che i bordi siano rounded) ma con shift-k ti sputa il popup dla man page (o almeno qlche info) del comando su cui ti trovi
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
 end
 
-local function lsp_highlight_document(client)
+local function lsp_highlight_document(client) -- tristemente nn mi highlighta nulla al momento... (dovrebbe fare qla cosa carina di evidenziare tutte le occorrenze dla parola sopra cui stai con il cursore...
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlight then
     vim.api.nvim_exec(
