@@ -37,7 +37,7 @@ M.setup = function() -- qsto pke' in realta' qsto file lo usiamo in 1 modo parti
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
-  }) -- qsto e' clamoroso! (in realta' qua stai solo facendo in modo che i bordi siano rounded) ma con shift-k ti sputa il popup dla man page (o almeno qlche info) del comando su cui ti trovi
+  }) -- qsto e' clamoroso! (in realta' qua stai solo facendo in modo che i bordi siano rounded) ma con shift-k ti sputa il popup dla man page (o almeno qlche info) del comando su cui ti trovi -> in realta qsta e' 1 dei bindings che stai definendo sotto...
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
@@ -60,7 +60,8 @@ local function lsp_highlight_document(client) -- tristemente nn mi highlighta nu
   end
 end
 
-local function lsp_keymaps(bufnr)
+local function lsp_keymaps(bufnr) -- qsta roba qua e' assolutamente formidabile!
+  -- in sostanza fa uso dl'esecuzione del file per permetterti di muoverti tra i file! (ammetto che mi sfugge cosa facciano tutti con precisione ma per h mi accontento)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
