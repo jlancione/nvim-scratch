@@ -1,18 +1,8 @@
+local status_ok, configs = pcall(require, "nvim-treesitter.configs") -- qua nn stiamo richiamando 1 file o che... stiamo richiamando 1 key dla table nvim-treesitter
+if not status_ok then
+  return
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-local configs = require("nvim-treesitter.configs")
 configs.setup {
   ensure_installed = "all",
   sync_install = false, 
