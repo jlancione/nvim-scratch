@@ -1,4 +1,4 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs") -- qua nn stiamo richiamando 1 file o che... stiamo richiamando 1 key dla table nvim-treesitter
+local status_ok, configs = pcall(require, "nvim-treesitter.configs") -- qua nn stiamo importando 1 file... stiamo richiamando 1 key dla table nvim-treesitter
 if not status_ok then
   return
 end
